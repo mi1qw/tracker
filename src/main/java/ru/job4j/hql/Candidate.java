@@ -1,8 +1,7 @@
 package ru.job4j.hql;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import ru.job4j.Constants;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,10 +10,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "candidate")
 public class Candidate {
-    private static final Logger LOG = LoggerFactory.getLogger(Candidate.class);
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = Constants.ID_GENERATOR)
     private int id;
 
     private String name;

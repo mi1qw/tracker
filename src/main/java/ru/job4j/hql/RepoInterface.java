@@ -3,15 +3,15 @@ package ru.job4j.hql;
 import java.util.List;
 
 public interface RepoInterface {
-    Candidate add(Candidate item);
+    Candidate add(Candidate candidate);
 
-    boolean replace(String id, Candidate item);
+    boolean replace(int id, Candidate candidate);
 
-    boolean delete(String id);
+    boolean delete(int id);
 
     List<Candidate> findAll();
 
-    List<Candidate> findByName(String key);
+    List<Candidate> findByName(String name);
 
-    Candidate findById(String id);
+    Candidate findById(int id);
 }
