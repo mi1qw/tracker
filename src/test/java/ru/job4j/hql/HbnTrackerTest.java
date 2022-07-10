@@ -10,8 +10,6 @@ import static org.junit.Assert.*;
 
 public class HbnTrackerTest {
     private static final RepoInterface HBN = HbnTracker.getINSTANCE();
-    private static Candidate newCandidate;
-
 
     @Test
     public void add() {
@@ -20,7 +18,6 @@ public class HbnTrackerTest {
         HBN.add(candidate);
         int id = candidate.getId();
         assertTrue(id > 0);
-        HBN.delete(id);
     }
 
     @Test
@@ -32,7 +29,6 @@ public class HbnTrackerTest {
         candidate = HBN.findById(id);
         assertEquals(0, BigDecimal.valueOf(1000).compareTo(candidate.getSalary()));
         assertEquals("Ozy", candidate.getName());
-        HBN.delete(id);
     }
 
     @Test
@@ -47,11 +43,11 @@ public class HbnTrackerTest {
 
     @Test
     public void findAll() {
-        HBN.add(Candidate.of("A", 2, BigDecimal.valueOf(10)));
-        HBN.add(Candidate.of("B", 2, BigDecimal.valueOf(10)));
+        HBN.add(Candidate.of("A", 1, BigDecimal.valueOf(10)));
+        HBN.add(Candidate.of("B", 2, BigDecimal.valueOf(12)));
         List<Candidate> list = HBN.findAll();
         assertFalse(list.isEmpty());
-        list.forEach(cnd -> HBN.delete(cnd.getId()));
+        assertEquals(2, list.size());
     }
 
     @Test
@@ -61,19 +57,15 @@ public class HbnTrackerTest {
         candidate.setName("A");
         List<Candidate> list = HBN.findByName("Mike");
         assertEquals("Mike", list.iterator().next().getName());
-        list.forEach(cnd -> HBN.delete(cnd.getId()));
     }
 
     @Test
     public void findById() {
         Candidate candidate = Candidate.of("Zed", 2, BigDecimal.valueOf(110));
-        assertEquals(0, candidate.getId());
         HBN.add(candidate);
         int id = candidate.getId();
-        assertTrue(id > 0);
         candidate.setId(0);
         candidate = HBN.findById(id);
         assertEquals(id, candidate.getId());
-        HBN.delete(id);
     }
 }

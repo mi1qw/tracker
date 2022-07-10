@@ -68,6 +68,9 @@ jrebel.lic
 .*.sw?
 .idea
 
+# data base
+*.db
+
 # paulp script
 /.lib/
 

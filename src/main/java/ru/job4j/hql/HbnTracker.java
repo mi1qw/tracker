@@ -36,17 +36,9 @@ public class HbnTracker implements RepoInterface {
     public Candidate add(final Candidate candidate) {
         Session session = sf.openSession();
         session.beginTransaction();
-        int id = (int) session.createNativeQuery(
-                        "insert into Candidate  (id,name, experience, salary) "
-                        + "values (nextval('ID_GENERATOR'),:name,:experience,:salary)"
-                        + " RETURNING id")
-                .setParameter("name", candidate.getName())
-                .setParameter("experience", candidate.getExperience())
-                .setParameter("salary", candidate.getSalary())
-                .uniqueResult();
+        session.persist(candidate);
         session.getTransaction().commit();
         session.close();
-        candidate.setId(id);
         return candidate;
     }
 
