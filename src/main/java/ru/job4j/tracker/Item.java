@@ -5,6 +5,10 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * Дополнительные поля.
+ * String description и Timestamp created.
+ */
 @Entity
 @Table(name = "items")
 public class Item {
