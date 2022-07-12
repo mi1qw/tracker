@@ -21,6 +21,6 @@
         <!-- List of XML mapping files -->
 
         <mapping class="ru.job4j.hql.Candidate"/>
-
+        <mapping class="ru.job4j.tracker.Item"/>
     </session-factory>
 </hibernate-configuration>
