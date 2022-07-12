@@ -26,9 +26,10 @@ public class HbmTrackerTest {
         Item item = new Item("Ann", "description_Ann");
         HBM.add(item);
         int id = item.getId();
-        HBM.replace(id, new Item("Zed", "description_Zed"));
+        boolean updated = HBM.replace(id, new Item("Zed", "description_Zed"));
         item = HBM.findById(id);
         assertEquals("Zed", item.getName());
+        assertTrue(updated);
     }
 
     @Test
@@ -36,9 +37,10 @@ public class HbmTrackerTest {
         Item item = new Item("Ann", "description_Ann");
         HBM.add(item);
         int id = item.getId();
-        HBM.delete(id);
+        boolean updated = HBM.delete(id);
         item = HBM.findById(id);
         assertNull(item);
+        assertTrue(updated);
     }
 
     @Test

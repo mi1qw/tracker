@@ -41,10 +41,10 @@ public class HbmTracker implements Store {
     public boolean replace(final Integer id, final Item item) {
         Session session = sf.openSession();
         session.beginTransaction();
-        session.createQuery("update Item i set i.name = :name, "
-                            + "i.description = :description,"
-                            + "i.created = :created"
-                            + " where i.id = :id")
+        int res = session.createQuery("update Item i set i.name = :name, "
+                                      + "i.description = :description,"
+                                      + "i.created = :created"
+                                      + " where i.id = :id")
                 .setParameter("name", item.getName())
                 .setParameter("description", item.getDescription())
                 .setParameter("created", item.getCreated())
@@ -52,19 +52,19 @@ public class HbmTracker implements Store {
                 .executeUpdate();
         session.getTransaction().commit();
         session.close();
-        return true;
+        return res != 0;
     }
 
     @Override
     public boolean delete(final Integer id) {
         Session session = sf.openSession();
         session.beginTransaction();
-        session.createQuery("delete from Item i where i.id = :id")
+        int res = session.createQuery("delete from Item i where i.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         session.getTransaction().commit();
         session.close();
-        return true;
+        return res != 0;
     }
 
     @Override
