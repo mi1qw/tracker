@@ -6,6 +6,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * HbmTracker testing with HSQLDB.
+ */
 public class HbmTrackerTest {
     private static final Store HBM = new HbmTracker();
 
