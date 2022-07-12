@@ -8,6 +8,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.List;
 
+/**
+ * Hibernate.
+ */
 public class HibernateRun {
     public static void main(final String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
